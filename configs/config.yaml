@@ -1,2 +1,10 @@
 Server:
   HttpPort: 8000
+Logger:
+  FileName: storage/logs/logs.log
+  MaxSize: 64
+  MaxBackup: 4
+  MaxAge: 30
+  Compress: false
+  Type: single
+  Level: debug

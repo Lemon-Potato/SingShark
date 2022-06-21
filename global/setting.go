@@ -4,4 +4,5 @@ import "github.com/Lemon-Potato/SingShark/pkg/setting"
 
 var (
 	ServerSetting *setting.ServerSettingS
+	LoggerSetting *setting.LoggerSettingS
 )
