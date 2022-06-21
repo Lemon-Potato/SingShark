@@ -81,3 +81,11 @@ func getEncoder() zapcore.Encoder {
 func customTimeEncoder(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
 	enc.AppendString(t.Format("2006-01-02 15:04:05"))
 }
+
+func (l *Logger) Debug(moduleName string, fields ...zap.Field) {
+	l.logger.Debug(moduleName, fields...)
+}
+
+func (l *Logger) Info(moduleName string, fields ...zap.Field) {
+	l.logger.Info(moduleName, fields...)
+}

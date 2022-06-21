@@ -27,7 +27,6 @@ func main() {
 			"message": "pong",
 		})
 	})
-
 	r.Run(global.ServerSetting.HttpPort)
 }
 
