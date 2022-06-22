@@ -5,3 +5,4 @@
 - [Viper](https://github.com/spf13/viper)
 - [zap](https://github.com/uber-go/zap)
 - [lumberjack](https://github.com/natefinch/lumberjack)
+- [gorm](https://github.com/go-gorm/gorm)

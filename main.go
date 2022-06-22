@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/Lemon-Potato/SingShark/global"
+	"github.com/Lemon-Potato/SingShark/pkg/database"
 	"github.com/Lemon-Potato/SingShark/pkg/logger"
 	"github.com/Lemon-Potato/SingShark/pkg/setting"
 	"github.com/gin-gonic/gin"
@@ -18,6 +19,10 @@ func init() {
 	if err != nil {
 		log.Fatalf("init.setupLogger err: %v", err)
 	}
+	err = setupDBEngine()
+	if err != nil {
+		log.Fatalf("init.setupLogger err: %v", err)
+	}
 }
 
 func main() {
@@ -27,7 +32,7 @@ func main() {
 			"message": "pong",
 		})
 	})
-	r.Run(global.ServerSetting.HttpPort)
+	r.Run(":" + global.ServerSetting.HttpPort)
 }
 
 func setupSetting() error {
@@ -40,6 +45,10 @@ func setupSetting() error {
 		return err
 	}
 	err = setting.ReadSection("Logger", &global.LoggerSetting)
+	if err != nil {
+		return err
+	}
+	err = setting.ReadSection("Database", &global.DatabaseSetting)
 	if err != nil {
 		return err
 	}
@@ -60,5 +69,15 @@ func setupLogger() error {
 		return err
 	}
 	global.Logger = logger
+	return nil
+}
+
+func setupDBEngine() error {
+	var err error
+	global.DBEngine, err = database.NewDatabase(global.DatabaseSetting)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }

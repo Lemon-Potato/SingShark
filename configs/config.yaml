@@ -1,5 +1,5 @@
 Server:
-  HttpPort: 8000
+  HttpPort: 8090
 Logger:
   FileName: storage/logs/logs.log
   MaxSize: 64
@@ -8,3 +8,14 @@ Logger:
   Compress: false
   Type: single
   Level: debug
+Database:
+  DbConnection: mysql
+  DbHost: 127.0.0.1
+  DbPort: 3306
+  DbDatabase: gohub
+  Username: root
+  Password: root
+  Charset: utf8mb4
+  MaxIdleConnections: 100
+  MaxOpenConnections: 25
+  MaxLifeSeconds: 5
